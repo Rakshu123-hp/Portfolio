@@ -34,19 +34,6 @@ The resume PDF lives in `assets/files/`. If you ever replace it, keep the file
 name in sync with `SITE.resume` — that one value drives both Download Resume
 buttons.
 
-## Publishing to GitHub Pages
-
-```bash
-git init
-git add .
-git commit -m "Portfolio website"
-git branch -M main
-git remote add origin https://github.com/Rakshu123-hp/<repo-name>.git
-git push -u origin main
-```
-
-Then in the repo: **Settings → Pages → Source: Deploy from a branch → `main` / `root`**.
-The site goes live at `https://rakshu123-hp.github.io/<repo-name>/`.
 
 ## What's inside
 
