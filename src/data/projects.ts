@@ -23,6 +23,11 @@ export type Project = {
 /**
  * GitHub / demo links for projects are intentionally kept empty (null)
  * until the repositories are verified. Add the URLs below to activate them.
+ *
+ * `liveDemo` powers the "Live Demo" button shown on every project card and on
+ * the project page. When it is null the button renders as a disabled
+ * "coming soon" placeholder instead of a broken link, so you can drop the
+ * deployed URL in here at any time and the site picks it up automatically.
  */
 export const projects: Project[] = [
   {
@@ -77,7 +82,7 @@ export const projects: Project[] = [
     technologies: ['Python', 'Deep Learning', 'CNN', 'OpenCV'],
     featured: true,
     github: null,
-    liveDemo: null,
+    liveDemo: 'https://brain-tumar-detection-1.onrender.com/',
     accent: '#8aa2ff',
   },
 ]

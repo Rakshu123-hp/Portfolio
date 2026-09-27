@@ -6,6 +6,7 @@ import { Reveal } from '@/components/animations/Reveal'
 import { Badge } from '@/components/ui/Badge'
 import { EmptyState } from '@/components/ui/EmptyState'
 import { ProjectArtwork } from '@/components/ui/ProjectArtwork'
+import { LiveDemoButton } from '@/components/projects/LiveDemoButton'
 import { cn } from '@/utils/cn'
 
 export function ProjectHero({ project }: { project: Project }) {
@@ -80,16 +81,7 @@ export function ProjectHero({ project }: { project: Project }) {
                     <Github className="h-4 w-4" aria-hidden="true" /> Repository link coming soon
                   </span>
                 )}
-                {project.liveDemo ? (
-                  <a
-                    href={project.liveDemo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="focus-ring inline-flex items-center gap-2 rounded-xl border border-accent/40 bg-accent/10 px-5 py-2.5 text-sm font-medium text-accent-300 transition-all hover:bg-accent/15 hover:-translate-y-0.5"
-                  >
-                    <Globe className="h-4 w-4" aria-hidden="true" /> Live Demo
-                  </a>
-                ) : null}
+                <LiveDemoButton project={project} />
               </div>
             </Reveal>
           </div>

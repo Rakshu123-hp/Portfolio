@@ -5,6 +5,7 @@ import { cn } from '@/utils/cn'
 import { Badge } from '@/components/ui/Badge'
 import { ProjectArtwork } from '@/components/ui/ProjectArtwork'
 import { Reveal } from '@/components/animations/Reveal'
+import { LiveDemoButton } from '@/components/projects/LiveDemoButton'
 
 type ProjectCardProps = {
   project: Project
@@ -15,11 +16,11 @@ type ProjectCardProps = {
 export function ProjectCard({ project, seed, delay = 0 }: ProjectCardProps) {
   return (
     <Reveal delay={delay} className="h-full">
-      <Link
-        to={`/projects/${project.slug}`}
-        className="card-surface card-hover focus-ring group relative flex h-full flex-col overflow-hidden rounded-2xl p-6 sm:p-8"
-        aria-label={`View project: ${project.title}`}
-      >
+      {/*
+        The card is a container with a stretched link so that the "Live Demo"
+        button can be a real anchor without nesting anchors (invalid HTML).
+      */}
+      <div className="card-surface card-hover group relative flex h-full flex-col overflow-hidden rounded-2xl p-6 sm:p-8">
         <div className="relative h-44 overflow-hidden rounded-xl border border-white/[0.07] bg-surface-900 sm:h-52">
           <ProjectArtwork
             accent={project.accent}
@@ -60,14 +61,25 @@ export function ProjectCard({ project, seed, delay = 0 }: ProjectCardProps) {
           ))}
         </div>
 
-        <div className="mt-6 flex items-center justify-between border-t border-white/[0.06] pt-4">
-          <span className="text-sm font-medium text-ink">View Project</span>
-          <ArrowUpRight
-            className="h-4 w-4 text-ink-faint transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
-            aria-hidden="true"
-          />
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-white/[0.06] pt-4">
+          <span className="inline-flex items-center gap-1.5 text-sm font-medium text-ink">
+            View Project
+            <ArrowUpRight
+              className="h-4 w-4 text-ink-faint transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
+              aria-hidden="true"
+            />
+          </span>
+          <LiveDemoButton project={project} size="sm" className="relative z-20" />
         </div>
-      </Link>
+
+        <Link
+          to={`/projects/${project.slug}`}
+          className="focus-ring absolute inset-0 z-10 rounded-2xl"
+          aria-label={`View project: ${project.title}`}
+        >
+          <span className="sr-only">View Project</span>
+        </Link>
+      </div>
     </Reveal>
   )
 }
