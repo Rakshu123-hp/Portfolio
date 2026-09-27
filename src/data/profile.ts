@@ -14,5 +14,6 @@ export const profile = {
     github: 'https://github.com/Rakshu123-hp',
     leetcode: 'https://leetcode.com/u/Rakshu31/',
   },
-  resumeUrl: '',
+  // PDF lives in /public, so it is served from the site root as /RAKSHITHA-HP.pdf.
+  resumeUrl: '/RAKSHITHA-HP.pdf',
 } as const

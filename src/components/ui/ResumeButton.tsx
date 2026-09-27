@@ -13,9 +13,11 @@ type ResumeButtonProps = {
 }
 
 /**
- * Resume button that works before a resume file has been added.
- * - When `profile.resumeUrl` is set, it acts as a real download link.
- * - When empty, clicking shows an inline "coming soon" hint instead of a broken link.
+ * Resume button backed by `profile.resumeUrl`.
+ * - When the URL is set (it points at the PDF in /public), it renders a real
+ *   download link.
+ * - When empty, clicking shows an inline "coming soon" hint instead of a broken
+ *   link, so the button is safe to keep in the UI before the file exists.
  */
 export function ResumeButton({
   variant,
